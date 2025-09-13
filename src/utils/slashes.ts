@@ -1,12 +1,11 @@
-import { checkPageExists } from './utils';
-import type { SlashPage } from './types';
-import { ChangeFreqEnum } from '@astrojs/sitemap';
+import { checkSlashPageExists } from './utils';
+import { ChangeFreqEnum, type SlashPage } from '../types/types';
 
 export const slashes: Record<string, SlashPage> = {
   '/🍪': {
     url: '/🍪',
     description: 'would you like a cookie?',
-    isVisible: checkPageExists('/🍪'),
+    isVisible: checkSlashPageExists('/🍪'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),
@@ -17,7 +16,7 @@ export const slashes: Record<string, SlashPage> = {
   '/about': {
     url: '/about',
     description: 'my story in 60 seconds',
-    isVisible: checkPageExists('/about'),
+    isVisible: checkSlashPageExists('/about'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.MONTHLY,
@@ -27,7 +26,7 @@ export const slashes: Record<string, SlashPage> = {
   '/ai': {
     url: '/ai',
     description: 'how I am using AI',
-    isVisible: checkPageExists('/ai'),
+    isVisible: checkSlashPageExists('/ai'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -37,7 +36,7 @@ export const slashes: Record<string, SlashPage> = {
   '/blank': {
     url: '/blank',
     description: 'this page was intentionally left blank',
-    isVisible: checkPageExists('/blank'),
+    isVisible: checkSlashPageExists('/blank'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),
@@ -48,7 +47,7 @@ export const slashes: Record<string, SlashPage> = {
   '/blog': {
     url: '/blog',
     description: 'my miniblog where I share my thoughts and expertise',
-    isVisible: checkPageExists('/blog'),
+    isVisible: checkSlashPageExists('/blog'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.WEEKLY,
@@ -57,9 +56,8 @@ export const slashes: Record<string, SlashPage> = {
   },
   '/bucket-list': {
     url: '/bucket-list',
-    description:
-      'a list of things I hope to complete before I pass on from this realm',
-    isVisible: checkPageExists('/bucket-list'),
+    description: 'a list of things I hope to complete before I pass on from this realm',
+    isVisible: checkSlashPageExists('/bucket-list'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -69,7 +67,7 @@ export const slashes: Record<string, SlashPage> = {
   '/changelog': {
     url: '/changelog',
     description: 'what I have done (and will do) with this site',
-    isVisible: checkPageExists('/changelog'),
+    isVisible: checkSlashPageExists('/changelog'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.MONTHLY,
@@ -79,7 +77,7 @@ export const slashes: Record<string, SlashPage> = {
   '/colophon': {
     url: '/colophon',
     description: 'what keeps this site alive',
-    isVisible: checkPageExists('/colophon'),
+    isVisible: checkSlashPageExists('/colophon'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -89,7 +87,7 @@ export const slashes: Record<string, SlashPage> = {
   '/contact': {
     url: '/contact',
     description: 'channels you can reach me through',
-    isVisible: checkPageExists('/contact'),
+    isVisible: checkSlashPageExists('/contact'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -99,7 +97,7 @@ export const slashes: Record<string, SlashPage> = {
   '/feeds': {
     url: '/feeds',
     description: 'my own blog feeds (RSS, Atom, JSON)',
-    isVisible: checkPageExists('/feeds'),
+    isVisible: checkSlashPageExists('/feeds'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.WEEKLY,
@@ -109,7 +107,7 @@ export const slashes: Record<string, SlashPage> = {
   '/guestbook': {
     url: '/guestbook',
     description: 'let me know you have dropped by…',
-    isVisible: checkPageExists('/guestbook'),
+    isVisible: checkSlashPageExists('/guestbook'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),
@@ -120,7 +118,7 @@ export const slashes: Record<string, SlashPage> = {
   '/hello': {
     url: '/hello',
     description: 'ways you can say hello',
-    isVisible: checkPageExists('/hello'),
+    isVisible: checkSlashPageExists('/hello'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -130,7 +128,7 @@ export const slashes: Record<string, SlashPage> = {
   '/interests': {
     url: '/interests',
     description: 'a list of what I am fascinated by',
-    isVisible: checkPageExists('/interests'),
+    isVisible: checkSlashPageExists('/interests'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -140,7 +138,7 @@ export const slashes: Record<string, SlashPage> = {
   '/llm': {
     url: '/llm',
     description: 'are you an LLM?',
-    isVisible: checkPageExists('/llm'),
+    isVisible: checkSlashPageExists('/llm'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.NEVER,
@@ -150,7 +148,7 @@ export const slashes: Record<string, SlashPage> = {
   '/nope': {
     url: '/nope',
     description: 'a list of what I will never accept',
-    isVisible: checkPageExists('/nope'),
+    isVisible: checkSlashPageExists('/nope'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),
@@ -161,7 +159,7 @@ export const slashes: Record<string, SlashPage> = {
   '/now': {
     url: '/now',
     description: 'a summary of what I am working on (updated quarterly)',
-    isVisible: checkPageExists('/now'),
+    isVisible: checkSlashPageExists('/now'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.MONTHLY,
@@ -171,7 +169,7 @@ export const slashes: Record<string, SlashPage> = {
   '/podroll': {
     url: '/podroll',
     description: 'a curated list of podcasts I listen to (and would recommend)',
-    isVisible: checkPageExists('/podroll'),
+    isVisible: checkSlashPageExists('/podroll'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -181,7 +179,7 @@ export const slashes: Record<string, SlashPage> = {
   '/privacy': {
     url: '/privacy',
     description: 'how I ensure your visit to my site remains transparent',
-    isVisible: checkPageExists('/privacy'),
+    isVisible: checkSlashPageExists('/privacy'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -191,7 +189,7 @@ export const slashes: Record<string, SlashPage> = {
   '/resume': {
     url: '/resume',
     description: 'my career timeline up to now',
-    isVisible: checkPageExists('/resume'),
+    isVisible: checkSlashPageExists('/resume'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.YEARLY,
@@ -201,7 +199,7 @@ export const slashes: Record<string, SlashPage> = {
   '/sitemap': {
     url: '/sitemap',
     description: 'if you are not a bot, then do not worry about this!',
-    isVisible: checkPageExists('/sitemap'),
+    isVisible: checkSlashPageExists('/sitemap'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),
@@ -212,7 +210,7 @@ export const slashes: Record<string, SlashPage> = {
   '/til': {
     url: '/til',
     description: 'today, I learned…',
-    isVisible: checkPageExists('/til'),
+    isVisible: checkSlashPageExists('/til'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),
@@ -223,7 +221,7 @@ export const slashes: Record<string, SlashPage> = {
   '/watched': {
     url: '/watched',
     description: 'I keep a log of all the movies I have watched so far',
-    isVisible: checkPageExists('/watched'),
+    isVisible: checkSlashPageExists('/watched'),
     sitemapRules: {
       lastmod: new Date().toISOString(),
       changefreq: ChangeFreqEnum.MONTHLY,
@@ -233,7 +231,7 @@ export const slashes: Record<string, SlashPage> = {
   '/yep': {
     url: '/yep',
     description: 'a list of what I will always accept',
-    isVisible: checkPageExists('/yep'),
+    isVisible: checkSlashPageExists('/yep'),
     sitemapRules: {
       exclude: true,
       lastmod: new Date().toISOString(),

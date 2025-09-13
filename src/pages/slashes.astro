@@ -5,147 +5,19 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BoxedLayout from '@layouts/BoxedLayout.astro';
 import { Icon } from 'astro-icon/components';
 
-const slashes = [
-  {
-    link: '/🍪',
-    description: 'would you like a cookie?',
-    isVisible: true,
-    nowrap: true,
-  },
-  {
-    link: '/about',
-    description: 'my story in 60 seconds',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/ai',
-    description: 'how I am using AI',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/blank',
-    description: 'this page was left intentionally blank',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/blog',
-    description: 'my miniblog where I share my thoughts and expertise',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/bucket-list',
-    description:
-      'a list of things I hope to complete before I pass on from this realm',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/changelog',
-    description: 'what I have done (and will do) with this site',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/colophon',
-    description: 'what keeps this site alive',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/contact',
-    description: 'channels you can reach me through',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/feeds',
-    description: 'my own blog feeds (RSS, Atom, JSON)',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/guestbook',
-    description: 'let me know you have dropped by…',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/hello',
-    description: 'ways you can say hello',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/interests',
-    description: 'a list of what I am fascinated by',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/llm',
-    description: 'are you an LLM?',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/nope',
-    description: 'a list of what I will never accept',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/now',
-    description: 'a summary of what I am working on (updated quarterly)',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/podroll',
-    description: 'a curated list of podcasts I listen to (and would recommend)',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/privacy',
-    description: 'how I ensure your visit to my site remains transparent',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/resume',
-    description: 'my career timeline up to now',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/sitemap',
-    description: 'if you are not a bot, then do not worry about this!',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/til',
-    description: 'today, I learned…',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/watched',
-    description: 'I keep a log of all the movies I have watched so far',
-    isVisible: true,
-    nowrap: false,
-  },
-  {
-    link: '/yep',
-    description: 'a list of what I will always accept',
-    isVisible: true,
-    nowrap: false,
-  },
-];
+import { slashes } from '@utils/slashes.ts';
+
+import { type Page, PageType } from 'src/types/types';
+
+export const metadata: Page = {
+  lang: 'en',
+  slug: 'slashes',
+  excludeFromIndex: true,
+  lastmod: new Date('2025-09-16T12:00:00Z'),
+  type: PageType.SITE,
+  priority: 0.7,
+  slugTranslations: {},
+};
 ---
 
 <BaseLayout>
@@ -160,7 +32,7 @@ const slashes = [
         <P>
           Think of this page as a more concise and human-friendly
           <a
-            href='/sitemap'
+            href='/sitemap.xml'
             target='_blank'
             rel='noopener noreferrer'
             class='underline underline-offset-2 hover:text-zinc-600'
@@ -171,27 +43,19 @@ const slashes = [
             href='https://slashpages.net'
             target='_blank'
             rel='noopener noreferrer'
-            class='underline underline-offset-2 hover:text-zinc-600'
-            >slashpages.net</a
+            class='underline underline-offset-2 hover:text-zinc-600'>slashpages.net</a
           >.
         </P>
         <div class='mt-8 w-full'>
           {
-            slashes
-              .filter(slash => slash.isVisible)
-              .sort((a, b) => a.link.localeCompare(b.link))
-              .map(slash => (
-                <div class='flex items-center' id={slash.link}>
+            Object.entries(slashes)
+              .filter(([key, slash]) => slash.isVisible)
+              .sort(([a], [b]) => a.localeCompare(b))
+              .map(([key, slash]) => (
+                <div class='flex items-center' id={slash.url}>
                   <div class='w-32'>
-                    <a
-                      href={slash.link ?? '/404'}
-                      class='text-md hover:underline'
-                    >
-                      {slash.nowrap ? (
-                        <span class='whitespace-nowrap'>{slash.link}</span>
-                      ) : (
-                        slash.link
-                      )}
+                    <a href={slash.url} class='text-md hover:underline'>
+                      <span class='whitespace-nowrap'>{slash.url}</span>
                     </a>
                   </div>
                   <P class='w-full'>{slash.description}</P>
@@ -202,42 +66,16 @@ const slashes = [
       </main>
       <footer class='mt-8 w-full'>
         <div class='border-0.5 border-t border-zinc-400'></div>
-        <div
-          class='mt-4 flex w-full flex-col items-center justify-center gap-2 text-sm text-zinc-400'
-        >
+        <div class='mt-4 flex w-full flex-col items-center justify-center gap-2 text-sm text-zinc-400'>
           <div class='flex items-center gap-2'>
-            <a
-              href='https://www.linkedin.com/in/joebashour/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Icon
-                name='fa7-brands:linkedin'
-                size='1.5rem'
-                class='hover:text-[#2867B2]'
-              />
+            <a href='https://www.linkedin.com/in/joebashour/' target='_blank' rel='noopener noreferrer'>
+              <Icon name='fa7-brands:linkedin' size='1.5rem' class='hover:text-[#2867B2]' />
             </a>
-            <a
-              href='https://github.com/joeBash'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Icon
-                name='fa7-brands:github'
-                size='1.5rem'
-                class='hover:text-[#24292F]'
-              />
+            <a href='https://github.com/joeBash' target='_blank' rel='noopener noreferrer'>
+              <Icon name='fa7-brands:github' size='1.5rem' class='hover:text-[#24292F]' />
             </a>
-            <a
-              href='https://bsky.app/profile/joebashour.bsky.social'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Icon
-                name='fa7-brands:bluesky'
-                size='1.5rem'
-                class='hover:text-[#1185FE]'
-              />
+            <a href='https://bsky.app/profile/joebashour.bsky.social' target='_blank' rel='noopener noreferrer'>
+              <Icon name='fa7-brands:bluesky' size='1.5rem' class='hover:text-[#1185FE]' />
             </a>
           </div>
           <span>© 2025 Joe Bashour</span>

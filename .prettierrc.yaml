@@ -2,9 +2,10 @@ trailingComma: 'es5'
 tabWidth: 2
 semi: true
 singleQuote: true
-printWidth: 80
+printWidth: 120
 arrowParens: 'avoid'
 bracketSameLine: false
+endOfLine: 'lf'
 tailwindStylesheet: './src/styles/global.css'
 plugins:
   - 'prettier-plugin-astro'
@@ -24,3 +25,6 @@ overrides:
   - files: '*.css'
     options:
       parser: 'css'
+  - files: '*.xml.ts'
+    options:
+      singleQuote: false

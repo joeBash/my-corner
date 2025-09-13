@@ -1,11 +1,9 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
 /* ------------------------------ Integrations ------------------------------ */
+import icon from 'astro-icon';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import icon from 'astro-icon';
 /* -------------------------------------------------------------------------- */
 
 import tailwindcss from '@tailwindcss/vite';
@@ -13,7 +11,8 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.joebashour.dev',
-  integrations: [svelte(), mdx(), sitemap(), icon()],
+  base: '/',
+  integrations: [icon(), svelte(), mdx()],
 
   vite: {
     plugins: [tailwindcss()],

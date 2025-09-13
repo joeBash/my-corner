@@ -1,12 +1,11 @@
 ---
-import P from '@components/Headings/P.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import { type Page, PageType } from 'src/types/types';
 
 export const metadata: Page = {
   lang: 'en',
-  slug: 'blank',
-  excludeFromIndex: true,
+  slug: 'about',
+  excludeFromIndex: false,
   lastmod: new Date('2025-09-16T12:00:00Z'),
   type: PageType.SITE,
   slugTranslations: {},
@@ -14,5 +13,8 @@ export const metadata: Page = {
 ---
 
 <MainLayout>
-  <P text='This page was intentionally left blank.' class='flex justify-center' />
+  <main>
+    <h1>About Me</h1>
+    <p>Welcome to the about page! Here you can learn more about me and my work.</p>
+  </main>
 </MainLayout>

@@ -1,30 +1,36 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
-import BoxedLayout from '@layouts/BoxedLayout.astro';
-import Navbar from '@components/Navbar.astro';
 
 import H1 from '@components/Headings/H1.astro';
 import H2 from '@components/Headings/H2.astro';
 import P from '@components/Headings/P.astro';
-import Footer from '@components/Footer.astro';
+import { type Page, PageType } from 'src/types/types';
+
+export const metadata: Page = {
+  lang: 'en',
+  slug: '',
+  excludeFromIndex: false,
+  lastmod: new Date('2025-09-16T12:00:00Z'),
+  type: PageType.SITE,
+  priority: 1.0,
+  slugTranslations: {},
+};
 ---
 
 <MainLayout>
   <section class='prose prose-zinc mb-15 max-w-none'>
     <H1 text='Hello, World!' />
     <P>
-      I'm Joe. Welcome to my corner of the Internet! I love to build innovative
-      solutions for problems. I prefer digital solutions, but sometimes physical
-      solutions as well.<br /><br />Feel free to take a look around - my
-      portfolio, miniblog, and current projects all live here!
+      I'm Joe. Welcome to my corner of the Internet! I love to build innovative solutions for problems. I prefer digital
+      solutions, but sometimes physical solutions as well.<br /><br />Feel free to take a look around - my portfolio,
+      miniblog, and current projects all live here!
     </P>
   </section>
   <section class='prose prose-zinc mb-15 max-w-none'>
     <H2 text='A Second Heading' />
     <P>
-      This is a second section to demonstrate spacing between sections. Notice
-      how the spacing is larger than the spacing between the heading and
-      paragraph in the previous section.
+      This is a second section to demonstrate spacing between sections. Notice how the spacing is larger than the
+      spacing between the heading and paragraph in the previous section.
     </P>
   </section>
 </MainLayout>
